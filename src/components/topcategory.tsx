@@ -1,3 +1,5 @@
+'use client'; // Ensuring it's a Client Component
+
 import React from 'react';
 
 // Define an interface for the category data
@@ -8,7 +10,7 @@ interface Category {
 }
 
 export default function Topcategory() {
-  const Data: Category[] = [
+  const categoryItems: Category[] = [
     {
       image: '/topcategory/Category1.png',
       name: 'Wing Chair',
@@ -27,16 +29,16 @@ export default function Topcategory() {
   ];
 
   return (
-    <div className="px-4 sm:px-8 md:px-48 py-8">
+    <section className="px-4 sm:px-8 md:px-48 py-8">
       <div>
         <h1 className="text-2xl font-bold mb-4 pl-4">Top Categories</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10">
-          {Data.map((val: Category, i: number) => (
+          {categoryItems.map((item, index) => (
             <div
-              key={i}
+              key={index}
               className="group relative h-80 bg-cover bg-center flex flex-col items-center rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
               style={{
-                backgroundImage: `url(${val.image})`,
+                backgroundImage: `url(${item.image})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
@@ -46,13 +48,13 @@ export default function Topcategory() {
 
               {/* Content */}
               <div className="absolute bottom-0 left-0 w-full h-1/4 px-4 py-2 text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 overflow-hidden">
-                <h2 className="font-semibold text-base truncate">{val.name}</h2>
-                <span className="text-sm font-medium truncate">{val.product} products</span>
+                <h2 className="font-semibold text-base truncate">{item.name}</h2>
+                <span className="text-sm font-medium truncate">{item.product} products</span>
               </div>
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
